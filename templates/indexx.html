@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='/indexxxs.css') }}" />
+
+    <style>
+
+        /* body{
+            font-family: "Helvetica Neue",Helvetica;
+        }
+
+        #chatbox{
+            margin-left: auto;
+            margin-right: auto;
+            width: 40%;
+            margin-top:50px;
+
+        }
+
+        .botText{
+            font-family: "Helvetica Neue",Helvetica;
+            font-size: 16px;
+            text-align: left;
+            line-height:25px;
+            color: #B42B51;
+
+        }
+
+        #userInput{
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%;
+            text-align: center;
+            margin-top:50px;
+        }
+
+        #textInput{
+            border: 3px solid white;
+            border-bottom: 3px dotted #F4ABC4;
+            font-family: "Helvetica Neue",Helvetica;
+            font-size: 16px;
+            width:60%;
+            padding: 20px;
+            color: #B42B51;
+        }
+
+        #buttonInput{
+            padding: 5px;
+            font-family: "Helvetica Neue",Helvetica;
+            font-size: 16px;
+            padding: 10px;
+            border: 3px solid #F4ABC4;
+            border-radius: 10px;
+        }
+
+        .userText{
+            text-align: right;
+        }
+
+        h1{
+            text-align: center; */
+        /* } */
+
+    </style>
+</head>
+<body>
+    <h1>Chatbot App</h1>
+    <div>
+        <div id="chatbox">
+            <p class="botText">
+                <span>Destry :Heyyy there! I'm Destry a chatbot!</span>
+            </p>
+            <p class="botText">
+                <p>For chatting with me ask anything you like</p>
+                <p>For solving mathematical problems : "math: ..."</p>
+                <p>For general knowledge based questions add prefix like this : "gk:What is the capital of Romania ?"</p>
+                <p>For knowing weather conditions : "weather!"</p>
+            </p>
+        </div>
+        <div id="userInput" >
+            <input id="textInput" type="text" name="userMessage" placeholder="Type your message here"/>
+            <input id="buttonInput" type="submit" value="Send"/>
+        </div>
+    </div>
+
+    <script>
+
+        function getUserResponse(){
+
+            var userText = $('#textInput').val();
+            var userHTML = "<p class='userText'>User: <span>"+userText+"</span></p>";
+            $('#textInput').val("");
+            $('#chatbox').append(userHTML);
+            document.getElementById("userInput").scrollIntoView({block:"start", behavior:"smooth"});
+
+            // if (userText = "weather!"){
+            //     $.get("/getweather", {userMessage: userText}).done(function(data){
+            //     var botHTML = "<p class='botText'><span>"+"Current temparature : "+data.current.condition.text+", There might be :"+data.current.temp_c+"</span></p>";
+            //     $('#chatbox').append(botHTML);
+            // });
+            // }
+            
+            $.get("/get", {userMessage: userText}).done(function(data){
+                var botHTML = "<p class='botText'>Destry :<span>"+data+"</span></p>";
+                $('#chatbox').append(botHTML);
+                console.log("got it");
+            });
+            
+
+            
+
+        }
+
+        $("#textInput").keypress(function(e){
+            if(e.which == 13){
+                getUserResponse();
+            }
+        });
+
+        $('#buttonInput').click(function(){
+            
+                getUserResponse();
+            
+        })
+
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+body{
+    font-family: "Helvetica Neue",Helvetica;
+}
+
+#chatbox{
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    margin-top:50px;
+
+}
+
+.botText{
+    font-family: "Helvetica Neue",Helvetica;
+    font-size: 16px;
+    text-align: left;
+    line-height:25px;
+    color: #B42B51;
+
+}
+
+#userInput{
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    text-align: center;
+    margin-top:50px;
+}
+
+#textInput{
+    border: 3px solid white;
+    border-bottom: 3px dotted #F4ABC4;
+    font-family: "Helvetica Neue",Helvetica;
+    font-size: 16px;
+    width:60%;
+    padding: 20px;
+    color: #B42B51;
+}
+
+#buttonInput{
+    padding: 5px;
+    font-family: "Helvetica Neue",Helvetica;
+    font-size: 16px;
+    padding: 10px;
+    border: 3px solid #F4ABC4;
+    border-radius: 10px;
+}
+
+.userText{
+    text-align: right;
+}
+
+h1{
+    text-align: center;
+}
